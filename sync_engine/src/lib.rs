@@ -725,7 +725,7 @@ pub unsafe fn Replicate(
 }
 
 pub fn register(ctx: Context) -> Result<(), i32> {
-    #[cfg(feature = "trial")]
+    /* #[cfg(feature = "trial")]
     std::thread::spawn(|| {
         println!("# Attention ====================================================================== #");
         println!("# Attention, TRIAL version, do NOT use in production, it will shutdown in ~2 hours #");
@@ -742,7 +742,7 @@ pub fn register(ctx: Context) -> Result<(), i32> {
         let duration = std::time::Duration::from_secs(total_wait);
         std::thread::sleep(duration);
         std::process::exit(1);
-    });
+    }); */
 
     register_write_function(&ctx, "REDISQL.V1.EXEC.NOW", ExecNow)
         .and_then(|_| {
